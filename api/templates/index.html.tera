@@ -1,7 +1,7 @@
 {% extends "layout.html.tera" %} {% block content %}
 <div class="container">
   <p><!--Nothing to see here --></p>
-  <h1>Transactions</h1>
+  <h1>Transactions: {{total_transactions_count}}</h1>
   <h4>Address: {{address}}</h4>
   {% if flash %}
   <small class="field-{{ flash.kind }}-flash">
@@ -12,6 +12,7 @@
     <tbody>
       <thead>
         <tr>
+          <th>Number</th>
           <th>Tx Id</th>
           <th>Block Number</th>
           <th>Date Time</th>
@@ -23,6 +24,7 @@
       </thead>
       {% for transaction in transactions %}
       <tr class="transaction">
+        <td>{{ loop.index + (page - 1) * transactions_per_page}} </td>
         <td>{{ transaction.tx_id }} </td>
         <td>{{ transaction.block_number }}</td>
         <td>{{ transaction.date_time }}</td>

@@ -10,11 +10,11 @@ enum QueryAs {
 }
 
 impl Query {
-    pub async fn get_transactions_since_block_for_selected_address(
+    pub async fn get_transactions_count_since_block_for_selected_address(
         db: &DbConn,
         starting_block_id: u64,
         address: String,
-    ) -> Result<Vec<transactions::Model>, DbErr> {
+    ) -> Result<u64, DbErr> {
         Transactions::find()
             .filter(
                 Condition::any()
@@ -22,7 +22,7 @@ impl Query {
                     .add(transactions::Column::AddressTo.eq(&address)),
             )
             .filter(transactions::Column::BlockNumber.gt(starting_block_id))
-            .all(db)
+            .count(db)
             .await
     }
 
