@@ -91,8 +91,6 @@ pub async fn parse_transactions(
 
         let date_time = Utc.timestamp_opt(timestamp, 0).unwrap();
 
-        println!("hash: {}", tx_id);
-
         let parsed_transaction = transactions::Model {
             tx_id: tx_id.to_string(),
             address_from: address_from.to_string(),
