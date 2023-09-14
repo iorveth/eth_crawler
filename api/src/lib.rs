@@ -117,7 +117,6 @@ async fn create(
     ensure_valid_eth_address(&form.address)?;
 
     let current_block_number = get_current_block_number().await?;
-    println!("Current block number: {}", current_block_number);
     
     ensure_valid_starting_block_number(form.starting_block_number, current_block_number)?;
 
@@ -130,8 +129,6 @@ async fn create(
         .await
         .map_err(|e| ServerError::from(e))?;
 
-    println!("Fetched block numbers since block {:?}", fetched_block_numbers_since_block);
-
     let block_ranges_for_unfetched_transactions = get_block_ranges_for_unfetched_transactions(
         fetched_block_numbers_since_block,
         form.starting_block_number,
@@ -139,8 +136,6 @@ async fn create(
     );
 
     let mut unfetched_transactions = vec![];
-
-    println!("Block ranges for unfetched transactions {:?}", block_ranges_for_unfetched_transactions);
 
     for block_range_for_unfetched_transactions in block_ranges_for_unfetched_transactions {
         let transactions =

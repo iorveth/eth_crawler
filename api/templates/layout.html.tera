@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Actix Example</title>
-    <meta name="description" content="Actix - SeaOrm integration example" />
-    <meta name="author" content="Sam Samai" />
+    <title>Eth Crawler</title>
+    <meta name="description" content="Eth Crawler" />
+    <meta name="author" content="Arsen Kondratiev" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link
