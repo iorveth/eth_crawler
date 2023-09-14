@@ -13,5 +13,5 @@
 ## Run
 1. `cargo run`
 2. go to `http://127.0.0.1:8000/`![Screenshot from 2023-09-14 17-24-14](https://github.com/iorveth/eth_crawler/assets/18070359/4b42b67a-d738-4775-8e98-e775fb32a024)
-3. check parsed transactions ![Screenshot from 2023-09-14 17-27-49](https://github.com/iorveth/eth_crawler/assets/18070359/17487f33-5889-4b74-9803-b9cda83b1f8a)
+3. check parsed transactions ![Screenshot from 2023-09-14 18-16-00](https://github.com/iorveth/eth_crawler/assets/18070359/a6c250ec-a22a-4cea-b9d7-ce206d2cabb6)
 
