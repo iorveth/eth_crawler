@@ -95,7 +95,7 @@ pub async fn parse_transactions(
             tx_id: tx_id.to_string(),
             address_from: address_from.to_string(),
             address_to: address_to.to_string(),
-            value: value,
+            value,
             block_number,
             date_time: date_time.naive_utc(),
             tx_fee: gas_used * gas_price,
@@ -153,7 +153,7 @@ pub async fn fetch_transactions(
     let mut parsed_transactions: Vec<transactions::Model> = Vec::new();
 
     // Parse transactions until there are no more transactions left to fetch
-    while transactions.len() != 0 {
+    while !transactions.is_empty() {
         let request =
             get_fetch_tx_request_string(&transaction_form_input.address, r_start, r_end, page);
 

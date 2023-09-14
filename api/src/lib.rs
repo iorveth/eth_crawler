@@ -88,7 +88,7 @@ async fn list(
         transactions_per_page,
     )
     .await
-    .map_err(|e| ServerError::from(e))?;
+    .map_err(ServerError::from)?;
 
     let total_transactions_count = Query::get_transactions_count_since_block_for_selected_address(
         conn,
@@ -96,7 +96,7 @@ async fn list(
         address.clone(),
     )
     .await
-    .map_err(|e| ServerError::from(e))?;
+    .map_err(ServerError::from)?;
 
     let mut ctx = tera::Context::new();
 
@@ -136,7 +136,7 @@ async fn create(
             form.starting_block_number,
         )
         .await
-        .map_err(|e| ServerError::from(e))?;
+        .map_err(ServerError::from)?;
 
     let block_ranges_for_unfetched_transactions = get_block_ranges_for_unfetched_transactions(
         fetched_block_numbers_since_block,
@@ -155,7 +155,7 @@ async fn create(
     if !unfetched_transactions.is_empty() {
         Mutation::save_transactions(conn, unfetched_transactions)
             .await
-            .map_err(|e| ServerError::from(e))?;
+            .map_err(ServerError::from)?;
     }
 
     Ok(HttpResponse::Found()

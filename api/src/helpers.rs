@@ -6,10 +6,8 @@ pub fn get_block_ranges_for_unfetched_transactions(
     starting_block_number: u64,
     current_block_number: u64,
 ) -> Vec<(u64, u64)> {
-    let all_block_numbers_since_block: BTreeSet<u64> = (starting_block_number
-        ..current_block_number)
-        .into_iter()
-        .collect();
+    let all_block_numbers_since_block: BTreeSet<u64> =
+        (starting_block_number..current_block_number).collect();
 
     // I assume it should be sorted in ascending order here
     let unfetched_block_numbers_since_block: Vec<u64> = all_block_numbers_since_block
