@@ -1,0 +1,54 @@
+{% extends "layout.html.tera" %} {% block content %}
+<div class="container">
+  <p><!--Nothing to see here --></p>
+  <h1>Transactions</h1>
+  {% if flash %}
+  <small class="field-{{ flash.kind }}-flash">
+    {{ flash.message }}
+  </small>
+  {% endif %}
+  <table>
+    <tbody>
+      <thead>
+        <tr>
+          <th>Tx Id</th>
+          <th>Block Number</th>
+          <th>Date Time</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Value</th>
+          <th>Transaction Fee</th>
+        </tr>
+      </thead>
+      {% for transaction in transactions %}
+      <tr class="transaction">
+        <td>{{ transaction.tx_id }} </td>
+        <td>{{ transaction.block_number }}</td>
+        <td>{{ transaction.date_time }}</td>
+        <td>{{ transaction.address_from }}</td>
+        <td>{{ transaction.address_to }}</td>
+        <td>{{ transaction.value | float() / 1000000000000000000 }} ETH</td>
+        <td>{{ transaction.tx_fee | float() / 1000000000000000000 }} ETH</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>
+          {% if page == 1 %} Previous {% else %}
+          <a href="/list/{{address}}/{{starting_block_number}}?page={{ page - 1 }}&transactions_per_page={{ transactions_per_page }}"
+            >Previous</a
+          >
+          {% endif %} | {% if page == num_pages %} Next {% else %}
+          <a href="/list/{{address}}/{{starting_block_number}}?page={{ page + 1 }}&transactions_per_page={{ transactions_per_page }}"
+            >Next</a
+          >
+          {% endif %}
+        </td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% endblock content %}

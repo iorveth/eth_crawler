@@ -1,0 +1,13 @@
+[package]
+name = "eth_crawler"
+version = "0.1.0"
+authors = ["Arsen Kondratiev <arsen.kondratiev@protonmail.com>"]
+edition = "2021"
+publish = false
+
+[workspace]
+members = [".", "api", "service", "entity", "migration"]
+
+[dependencies]
+actix-example-api = { path = "api" }
+

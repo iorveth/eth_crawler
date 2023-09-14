@@ -1,0 +1,38 @@
+{% extends "layout.html.tera" %} {% block content %}
+<div class="row">
+  <h4>Load transactions for given address starting from specified block</h4>
+  <form action="/" method="post">
+    <div class="twelve columns">
+      <input
+        type="text"
+        placeholder="enter address"
+        name="address"
+        id="address"
+        value=""
+        autofocus
+        class="u-full-width"
+      />
+      <input
+        type="number"
+        placeholder="enter starting block number"
+        name="starting_block_number"
+        id="number"
+        value=""
+        autofocus
+        class="u-full-width"
+      />
+    </div>
+    <div class="twelve columns">
+      <div class="two columns">
+        <a href="/">
+          <input type="button" value="cancel" />
+        </a>
+      </div>
+      <div class="eight columns"></div>
+      <div class="two columns">
+        <input type="submit" value="load transactions" />
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock content %}
